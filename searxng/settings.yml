@@ -11,9 +11,8 @@ general:
 search:
   # English UI and English engine results by default.
   default_lang: "en"
-  # Blank disables autocomplete (keystrokes are not sent to a third party).
-  autocomplete: ""
-  # Only expose the HTML UI and the JSON API. Drop csv/rss.
+  # Brave suggest works from Render's IP (Google suggest is blocked).
+  autocomplete: "brave"  # Only expose the HTML UI and the JSON API. Drop csv/rss.
   formats:
     - html
     - json
@@ -43,11 +42,10 @@ ui:
   default_locale: "en"
 
 engines:
-  # Google and Bing are disabled in current SearXNG defaults because
-  # datacenter IPs are frequently blocked. Re-enabled here on request.
+  # Direct Google scraping is blocked from Render's IP, so disable it to
+  # avoid "access denied" noise. Google results still come via google cse.
   - name: google
-    disabled: false
-    timeout: 5.0
+    disabled: true
   - name: bing
     disabled: false
     timeout: 5.0
