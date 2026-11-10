@@ -53,4 +53,4 @@ engines:
   - name: brave
     timeout: 5.0
   - name: duckduckgo
-    timeout: 5.0
+    timeout: 8.0
