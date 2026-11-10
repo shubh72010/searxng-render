@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: searxng
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    # Give Granian time to drain in-flight searches on SIGTERM.
+    maxShutdownDelaySeconds: 60
+    envVars:
+      # Required: Flask session signing + image-proxy HMAC key.
+      # Render generates it once and keeps it stable across deploys/restarts.
+      - key: SEARXNG_SECRET
+        generateValue: true
