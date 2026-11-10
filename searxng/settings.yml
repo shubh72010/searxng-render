@@ -52,5 +52,7 @@ engines:
   # Brave and DuckDuckGo are already enabled upstream; only tighten timeouts.
   - name: brave
     timeout: 5.0
+  # DuckDuckGo times out from Render's IP; disabled to avoid per-search
+  # latency and "unresponsive" noise. Brave + Bing + Google CSE remain.
   - name: duckduckgo
-    timeout: 8.0
+    disabled: true
